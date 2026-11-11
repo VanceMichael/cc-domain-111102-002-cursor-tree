@@ -1,0 +1,183 @@
+{
+  "requests_used": 4,
+  "max_requests": 20,
+  "root": {
+    "node_id": "root",
+    "snapshot": "S1",
+    "complete": true
+  },
+  "branches": {
+    "root": {
+      "node_id": "root",
+      "path": "root",
+      "url": "https://directory.invalid/root",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "reason_text": "游标链完整走到末页",
+      "snapshot": "S1",
+      "pages": [
+        "https://directory.invalid/root"
+      ],
+      "restarts": 0,
+      "requests": 1,
+      "reused": false,
+      "digest": "c764d9e44f145def",
+      "declared_parent": null,
+      "parents": [],
+      "sites": [],
+      "children": [
+        "west",
+        "east"
+      ],
+      "discarded": []
+    },
+    "west": {
+      "node_id": "west",
+      "path": "root/west",
+      "url": "https://directory.invalid/west",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "reason_text": "游标链完整走到末页",
+      "snapshot": "S2",
+      "pages": [
+        "https://directory.invalid/west"
+      ],
+      "restarts": 1,
+      "requests": 3,
+      "reused": false,
+      "digest": "845050ff1fd8d780",
+      "declared_parent": "root",
+      "parents": [
+        "root"
+      ],
+      "sites": [
+        "v2"
+      ],
+      "children": [],
+      "discarded": [
+        {
+          "snapshot": "S1",
+          "pages": [
+            "https://directory.invalid/west"
+          ],
+          "outcome": "cursor_expired",
+          "site_ids": [
+            "v1"
+          ]
+        }
+      ]
+    },
+    "east": {
+      "node_id": "east",
+      "path": "root/east",
+      "url": "https://directory.invalid/east",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "reason_text": "游标链完整走到末页",
+      "snapshot": "S1",
+      "pages": [
+        "https://directory.invalid/east"
+      ],
+      "restarts": 0,
+      "requests": 0,
+      "reused": true,
+      "digest": "dde3e3e9dc6b3da9",
+      "declared_parent": "root",
+      "parents": [
+        "root"
+      ],
+      "sites": [
+        "v1"
+      ],
+      "children": [
+        "root"
+      ],
+      "discarded": []
+    }
+  },
+  "sites": [
+    {
+      "id": "v2",
+      "name": "河村",
+      "branch": "west",
+      "snapshot": "S2",
+      "path": "root/west/v2"
+    },
+    {
+      "id": "v1",
+      "name": "河村",
+      "branch": "east",
+      "snapshot": "S1",
+      "path": "root/east/v1"
+    }
+  ],
+  "dual_parents": {
+    "sites": [],
+    "branches": [],
+    "declared_parent_mismatch": [],
+    "move_observations": [
+      {
+        "site": "v1",
+        "accepted": [
+          {
+            "id": "v1",
+            "name": "河村",
+            "branch": "east",
+            "snapshot": "S1",
+            "path": "root/east/v1"
+          }
+        ],
+        "discarded": [
+          {
+            "branch": "west",
+            "snapshot": "S1",
+            "outcome": "cursor_expired"
+          }
+        ]
+      }
+    ],
+    "same_name_distinct_ids": [
+      {
+        "name": "河村",
+        "ids": [
+          "v1",
+          "v2"
+        ]
+      }
+    ]
+  },
+  "back_edges": [
+    {
+      "from": "east",
+      "to": "root",
+      "url": "https://directory.invalid/root",
+      "snapshot": "S1",
+      "kind": "ancestor"
+    }
+  ],
+  "excluded_prior_records": [
+    {
+      "node": "west",
+      "reason": "既往结果未纳入：已重新采集（既往代次 S2，本轮代次 S2）"
+    }
+  ],
+  "verdict": {
+    "complete": false,
+    "generation": null,
+    "mixed": true,
+    "scopes": {
+      "S1": [
+        "root",
+        "east"
+      ],
+      "S2": [
+        "west"
+      ]
+    },
+    "gaps": [],
+    "explanation": [
+      "本轮不能宣称完整。",
+      "采纳结果跨代次（S1：root、east；S2：west），业务方不接受混代次的完整结果。"
+    ]
+  }
+}

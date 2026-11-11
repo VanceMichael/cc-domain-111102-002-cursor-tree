@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "root_snapshot": "S1",
+  "root_complete": true,
+  "branches": {
+    "root": {
+      "node_id": "root",
+      "url": "https://directory.invalid/root",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "snapshot": "S1",
+      "pages": [
+        "https://directory.invalid/root"
+      ],
+      "digest": "c764d9e44f145def",
+      "sites": [],
+      "children": [
+        {
+          "id": "west",
+          "kind": "branch",
+          "url": "https://directory.invalid/west"
+        },
+        {
+          "id": "east",
+          "kind": "branch",
+          "url": "https://directory.invalid/east"
+        }
+      ],
+      "declared_parent": null,
+      "parents": [],
+      "restarts": 0,
+      "requests": 1
+    },
+    "west": {
+      "node_id": "west",
+      "url": "https://directory.invalid/west",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "snapshot": "S2",
+      "pages": [
+        "https://directory.invalid/west"
+      ],
+      "digest": "845050ff1fd8d780",
+      "sites": [
+        {
+          "id": "v2",
+          "kind": "site",
+          "name": "河村"
+        }
+      ],
+      "children": [],
+      "declared_parent": "root",
+      "parents": [
+        "root"
+      ],
+      "restarts": 1,
+      "requests": 3
+    },
+    "east": {
+      "node_id": "east",
+      "url": "https://directory.invalid/east",
+      "status": "complete",
+      "reason": "cursor_chain_exhausted",
+      "snapshot": "S1",
+      "pages": [
+        "https://directory.invalid/east"
+      ],
+      "digest": "dde3e3e9dc6b3da9",
+      "sites": [
+        {
+          "id": "v1",
+          "kind": "site",
+          "name": "河村"
+        }
+      ],
+      "children": [
+        {
+          "id": "root",
+          "kind": "branch",
+          "url": "https://directory.invalid/root"
+        }
+      ],
+      "declared_parent": "root",
+      "parents": [
+        "root"
+      ],
+      "restarts": 0,
+      "requests": 0
+    }
+  }
+}
