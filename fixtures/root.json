@@ -1,0 +1,5 @@
+{
+  "entry": "https://directory.invalid/root",
+  "max_requests": 20,
+  "max_branch_restarts": 2
+}

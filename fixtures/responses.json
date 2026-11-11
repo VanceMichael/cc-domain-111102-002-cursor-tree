@@ -1,0 +1,30 @@
+{
+  "https://directory.invalid/root": [
+    {
+      "status": 200,
+      "body": "{\"node_id\": \"root\", \"parent_id\": null, \"snapshot\": \"S1\", \"items\": [{\"id\": \"west\", \"kind\": \"branch\", \"url\": \"https://directory.invalid/west\"}, {\"id\": \"east\", \"kind\": \"branch\", \"url\": \"https://directory.invalid/east\"}], \"next_cursor\": null}"
+    }
+  ],
+  "https://directory.invalid/west": [
+    {
+      "status": 200,
+      "body": "{\"node_id\": \"west\", \"parent_id\": \"root\", \"snapshot\": \"S1\", \"items\": [{\"id\": \"v1\", \"kind\": \"site\", \"name\": \"\\u6cb3\\u6751\"}], \"next_cursor\": \"https://directory.invalid/west?cursor=old\"}"
+    },
+    {
+      "status": 200,
+      "body": "{\"node_id\": \"west\", \"parent_id\": \"root\", \"snapshot\": \"S2\", \"items\": [{\"id\": \"v2\", \"kind\": \"site\", \"name\": \"\\u6cb3\\u6751\"}], \"next_cursor\": null}"
+    }
+  ],
+  "https://directory.invalid/west?cursor=old": [
+    {
+      "status": 410,
+      "body": "cursor_expired"
+    }
+  ],
+  "https://directory.invalid/east": [
+    {
+      "status": 200,
+      "body": "{\"node_id\": \"east\", \"parent_id\": \"root\", \"snapshot\": \"S1\", \"items\": [{\"id\": \"root\", \"kind\": \"branch\", \"url\": \"https://directory.invalid/root\"}, {\"id\": \"v1\", \"kind\": \"site\", \"name\": \"\\u6cb3\\u6751\"}], \"next_cursor\": null}"
+    }
+  ]
+}
